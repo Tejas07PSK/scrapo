@@ -6,26 +6,25 @@
 
  */
 
-const google = new require("images-scraper").Google();
+const Scraper = require("images-scraper"), google = new Scraper.Google();
 
 // Setting options for scraping
 
 const opts = {
 
-    "userAgent" : 'Chrome',
     "keyword" : '',
     "num" : 15,
     "detail" : true,
     "rlimit" : '20',
     "timeout" : 10000,
-    "nightmare" : { "show" : true }
 
 };
 
 //Start scraping for images on google.
+
 module.exports.scrape = async function (key){
 
     opts.keyword = key;
-    await (google.list(opts)).then((res) => { console.log(res); }, (err) => { console.log("Error !! Could not scrape images !! \n " + err); });
+    await google.list(opts).then((res) => { console.log(res); }).catch((err) => { console.log("Error !! Could not scrape images !! \n " + err); });
 
 };
