@@ -14,6 +14,8 @@ let eff = undefined;
 
 module.exports = {
 
+    // add search-key and links of images as documents to mongodb.
+
     "createDoc" : async function(obj) {
 
         await ((new models.keysimages(obj)).save()).then(
@@ -25,6 +27,9 @@ module.exports = {
         return (eff);
 
     },
+
+    // get links of images under existing search-key, from mongodb.
+
     "getDocFromKey" : async function(key) {
 
         await (models.keysimages).findOne({ 'key' : key }, "links", function (err, doc) {
@@ -37,6 +42,9 @@ module.exports = {
         return (eff);
 
     },
+
+    // get all existing search-keys from mongodb.
+    
     "getAllKeys" : async function() {
 
         await (models.keysimages).find({}, 'key', function (err, docs) {
