@@ -6,6 +6,8 @@
 
  */
 
+"use strict";
+
 const prep = require('./compressandfilter');
 const url = "https://cdn-images-1.medium.com/max/800/1*4AApxPkF4yXzY0jF0yHgkA.jpeg";
 

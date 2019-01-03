@@ -6,6 +6,8 @@
 
  */
 
+"use strict";
+
 const scrapper = require('./scrapper');
 
 // testing scrapper.

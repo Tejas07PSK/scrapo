@@ -6,6 +6,8 @@
 
  */
 
+"use strict";
+
 const jimp = require('jimp');
 
 // read image from url, compress it and finally convert it into gray-scale.

@@ -6,6 +6,8 @@
 
  */
 
+"use strict";
+
 const Scraper = require('images-scraper'), google = new Scraper.Google();
 
 // setting options for scraping.

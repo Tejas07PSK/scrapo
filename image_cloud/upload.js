@@ -6,6 +6,8 @@
 
  */
 
+"use strict";
+
 const cc = require('./cloudinaryConfig');
 const fs = require('fs');
 const cloud = require('cloudinary');
