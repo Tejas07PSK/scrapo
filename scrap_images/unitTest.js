@@ -8,4 +8,6 @@
 
 const scrapper = require("./scrapper");
 
-scrapper.scrape("dogs");
+//testing scrapper
+
+(scrapper.scrape("dogs")).then((res) => { console.log(res); }, (err) => { console.log(err); });
