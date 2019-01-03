@@ -22,9 +22,15 @@ const opts = {
 
 //Start scraping for images on google.
 
-module.exports.scrape = async function (key){
+module.exports.scrape = async function (key) {
 
     opts.keyword = key;
-    await google.list(opts).then((res) => { console.log(res); }).catch((err) => { console.log("Error !! Could not scrape images !! \n " + err); });
+    let urls = [];
+    await google.list(opts).then(
+
+        (res) => { for (let obj in res) { urls.push(res[obj].url); } }
+
+    ).catch((err) => { console.log("Error !! Could not scrape images !! \n " + err); });
+    return (urls);
 
 };
