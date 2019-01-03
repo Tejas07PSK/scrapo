@@ -12,12 +12,10 @@ const jimp = require('jimp');
 
 module.exports.compressAndFilter = async function (url) {
 
-    let img_buffer = null;
     await jimp.read(url).then(
 
-        (imgObj) => { img_buffer = (imgObj.resize(256, 256).quality(60).grayscale())['bitmap'].data; }
+        (imgObj) => { imgObj.resize(256, 256).quality(60).grayscale().write('../imgcache/temp.jpg'); }
 
     ).catch((err) => { console.log("Error !! Could not read image from 'URL' !! \n " + err); });
-    return (img_buffer);
 
 };
