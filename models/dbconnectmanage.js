@@ -2,7 +2,7 @@
 
         @Author : Tejas07PSK (Palash Sarkar),
         @CreatedON : 03 Jan, 2018, 8:57 PM,
-        @File-Name : DbConnectManage.js
+        @File-Name : dbconnectmanage.js
 
  */
 
