@@ -8,6 +8,8 @@
 
 const jimp = require('jimp');
 
+//Read image from url, compress it and finally convert it into gray-scale.
+
 module.exports.compressAndFilter = async function (url) {
 
     let img_buffer = null;
