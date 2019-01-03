@@ -6,9 +6,9 @@
 
  */
 
-const Scraper = require("images-scraper"), google = new Scraper.Google();
+const Scraper = require('images-scraper'), google = new Scraper.Google();
 
-// Setting options for scraping
+// setting options for scraping.
 
 const opts = {
 
@@ -20,7 +20,7 @@ const opts = {
 
 };
 
-//Start scraping for images on google.
+// start scraping for images on google.
 
 module.exports.scrape = async function (key) {
 

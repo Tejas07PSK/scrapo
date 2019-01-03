@@ -6,6 +6,8 @@
 
  */
 
+// cloudinary config.
+
 module.exports.config = {
 
     "cloud_name" : 'dczwplg2j',

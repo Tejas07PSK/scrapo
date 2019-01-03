@@ -6,8 +6,8 @@
 
  */
 
-const scrapper = require("./scrapper");
+const scrapper = require('./scrapper');
 
-//testing scrapper
+// testing scrapper.
 
 (scrapper.scrape("dogs")).then((res) => { console.log(res); }, (err) => { console.log(err); });
