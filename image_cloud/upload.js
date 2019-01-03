@@ -11,7 +11,8 @@ const fs = require('fs');
 const cloud = require('cloudinary');
 cloud.config(cc.config);
 
-//uploading processed image;
+// uploading processed image.
+
 module.exports.push = async function () {
 
     let img_url = undefined; //will store the secure_url of the image stored in the cloud
