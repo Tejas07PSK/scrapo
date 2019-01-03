@@ -16,7 +16,7 @@ module.exports = {
 
     "createDoc" : async function(obj) {
 
-        await ((new models.Dashboard(obj)).save()).then(
+        await ((new models.keysimages(obj)).save()).then(
 
             (doc) => { console.log("Document insertion successful in collection \'Dashboard\' !!"); console.log(`Newly created doc is : \n ${doc}`); eff = true; },
             (err) => { console.log("Document insertion failed !! ERROR !!"); console.log(err); eff = false; }
@@ -27,7 +27,7 @@ module.exports = {
     },
     "getDocFromKey" : async function(key) {
 
-        await (models.Dashboard).findOne({ 'key' : key }, "links", function (err, doc) {
+        await (models.keysimages).findOne({ 'key' : key }, "links", function (err, doc) {
 
             if(err) { console.log("Document retrieval failed !! Error !!"); console.log(err); eff = undefined; }
             else if (doc !== null) { console.log("Document retrieval successful !!"); eff = doc.links; }
@@ -39,10 +39,16 @@ module.exports = {
     },
     "getAllKeys" : async function() {
 
-        await (models.Dashboard).find({}, 'key', function (err, docs) {
+        await (models.keysimages).find({}, 'key', function (err, docs) {
 
             if (err) { console.log("Keys retrieval failed !! Error !!"); console.log(err); eff = undefined; }
-            else if (docs !== null) { console.log("Keys retrieval successful !!"); eff = docs; }
+            else if (docs !== null) {
+
+                console.log("Keys retrieval successful !!");
+                eff = [];
+                for(let i in docs) { eff.push(docs[i].key); }
+
+            }
             else { console.log("Unable to find any keys !!"); eff = false; }
 
         });
