@@ -44,7 +44,7 @@ module.exports = {
     },
 
     // get all existing search-keys from mongodb.
-    
+
     "getAllKeys" : async function() {
 
         await (models.keysimages).find({}, 'key', function (err, docs) {
