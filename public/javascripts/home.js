@@ -13,11 +13,7 @@ $(document).ready(function () {
         var tmp = $("input#key_sch");
         if (tmp.val() !== "") {
 
-            $.post("/", { "key" : tmp.val() }, function(data) {
-
-                alert(String(data));
-
-            }, "text");
+            $.post("/", { "key" : tmp.val() }).done((data) => { alert(String(data)); }).fail((xhr) => { alert(xhr.responseText); });
 
         }
 
