@@ -15,10 +15,10 @@ cloud.config(cc.config);
 
 // uploading processed image.
 
-module.exports.push = async function (fln) {
+module.exports.push = async function (fln, schkey) {
 
     let img_url = undefined; //will store the secure_url of the image stored in cloud
-    await cloud.v2.uploader.upload(fln, {"folder" : 'scrapo'}, function (error, result) {
+    await cloud.v2.uploader.upload(fln, {"folder" : schkey}, function (error, result) {
 
         if (error) { console.log(error); return; }
         img_url = result['secure_url'];
