@@ -30,13 +30,13 @@ router.post('/', function (req, res) {
     let key = req.body['key'];
     crud.getDocFromKey(key).then((lnks) => {
 
-        if ((lnks === undefined) || (lnks === null)) {
+        if (lnks === undefined) {
 
             res.status(500);
             res.end("Internal Error !! (http - 500)", "utf-8", function () { console.log("Http conversation ended successfully !!"); });
 
         }
-        else if (lnks.length === 0) {
+        else if (lnks === null) {
 
             (scrapper.scrape(key)).then((glimgurls) => {
 
