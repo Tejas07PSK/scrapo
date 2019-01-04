@@ -12,8 +12,8 @@
 
 module.exports.config = {
 
-    "cloud_name" : 'dczwplg2j',
-    "api_key" : '123951921577524',
-    "api_secret" : 'OkYRfz9-y5BQghw8qrXj4sVpd6I'
+    "cloud_name" : (process.env.CLOUDINARY_CLOUD_NAME) || 'dczwplg2j',
+    "api_key" : (process.env.CLOUDINARY_API_KEY) || '123951921577524',
+    "api_secret" : (process.env.CLOUDINARY_API_SECRET) || 'OkYRfz9-y5BQghw8qrXj4sVpd6I'
 
 };
