@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1><%= title %></h1>
+<div style="position: relative; top: 50px;" class="form-group">
+    <label style="font-size: 20px;" class="col-sm-12">List of images for <%= id %></label>
+    <% for (var i = 0; i < list.length; i += 1) { %>
+    <img src="<%= list[i] %>" style="position: relative; top: 30px;" class="img-rounded" width="256" height="256">
+    <% } %>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title><%= title %></title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div style="position: relative; top: 50px;" class="form-group">
+        <label style="font-size: 20px;">Enter search-key -:-</label>
+        <input type="text" class="form-control" id="key_sch" placeholder="Text goes here ....">
+        <button style="position: relative; top: 10px;" type="submit" class="col-sm-2 pull-right btn btn-primary" id="go_btn">Go</button>
+        <a style="position: relative; top: 200px; font-size: 20px;" class="col-sm-12 btn" href="/keys">Visit Keys Page</a>
+    </div>
+    <script type="text/javascript" src="/javascripts/home.js"></script>
+  </body>
+</html>
