@@ -29,7 +29,7 @@ module.exports.scrape = async function (key) {
     let urls = [];
     await google.list(opts).then(
 
-        (res) => { for (let obj in res) { urls.push(res[obj].thumb_url); } }
+        (res) => { for (let obj = 0; obj < res.length; obj += 1) { urls.push(res[obj].thumb_url); } }
 
     ).catch((err) => { console.log("Error !! Could not scrape images !! \n " + err); });
     return (urls);
