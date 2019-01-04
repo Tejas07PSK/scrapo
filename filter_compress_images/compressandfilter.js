@@ -12,12 +12,14 @@ const jimp = require('jimp');
 
 // read image from url, compress it and finally convert it into gray-scale.
 
-module.exports.compressAndFilter = async function (url) {
+module.exports.compressAndFilter = async function (url, filename) {
 
+    let result = undefined;
     await jimp.read(url).then(
 
-        (imgObj) => { imgObj.resize(256, 256).quality(60).grayscale().write('../imgcache/temp.jpg'); }
+        (imgObj) => { imgObj.resize(256, 256).quality(60).grayscale().write(filename); result = filename; }
 
-    ).catch((err) => { console.log("Error !! Could not read image from 'URL' !! \n " + err); });
+    ).catch((err) => { console.log("Error !! Could not read image from 'URL' !! \n " + err); result = undefined; });
+    return (result);
 
 };
