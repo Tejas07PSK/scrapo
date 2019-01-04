@@ -132,9 +132,9 @@ async function pt2(flns, key) {
     let sec_urls = [];
     for (let i = 0; i < flns.length; i += 1) {
 
-        await img_cld.push(flns[i]).then((img_url) => {
+        await img_cld.send(flns[i], key).then((img_url) => {
 
-            sec_urls.push(img_url, key);
+            sec_urls.push(img_url);
 
         }).catch((err) => { console.log(err); })
 
