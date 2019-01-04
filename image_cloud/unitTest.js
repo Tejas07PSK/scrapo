@@ -17,7 +17,7 @@ const filename = '../public/imgcache/temptest0.jpg';
 
 prep.compressAndFilter(url, filename).then((fln) => {
 
-        img_cld.push(fln).then((res) => { console.log("Secure url of uploaded image : " + res); })
+        img_cld.send(fln).then((res) => { console.log("Secure url of uploaded image : " + res); })
         .catch((err) => { console.log("Could not upload image to cloudinary !! Error !!"); console.error(err) });
 
     }, (err) => { console.log(err); });
