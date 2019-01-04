@@ -54,7 +54,7 @@ module.exports = {
 
                 console.log("Keys retrieval successful !!");
                 eff = [];
-                for(let i in docs) { eff.push(docs[i].key); }
+                for(let i = 0; i < docs.length; i += 1) { eff.push(docs[i].key); }
 
             }
             else { console.log("Unable to find any keys !!"); eff = false; }
