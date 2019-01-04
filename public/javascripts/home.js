@@ -11,7 +11,7 @@ $(document).ready(function () {
     $.ajaxSetup({
 
         type : 'POST',
-        timeout : 0
+        timeout : 40000000000000
 
     });
 
