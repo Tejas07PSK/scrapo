@@ -8,6 +8,13 @@
 
 $(document).ready(function () {
 
+    $.ajaxSetup({
+
+        type : 'POST',
+        timeout : 0
+
+    });
+
     $("button#go_btn").click(function() {
 
         var tmp = $("input#key_sch");
