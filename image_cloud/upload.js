@@ -15,7 +15,7 @@ cloud.config(cc.config);
 
 // uploading processed image.
 
-module.exports.push = async function (fln, schkey) {
+module.exports.send = async function (fln, schkey) {
 
     let img_url = undefined; //will store the secure_url of the image stored in cloud
     await cloud.v2.uploader.upload(fln, {"folder" : schkey}, function (error, result) {
