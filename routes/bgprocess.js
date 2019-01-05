@@ -16,24 +16,24 @@ const crud = require('../models/crud');
 
 async function cc(key) {
 
-    await crud.getDocFromKey(key).then((lnks) => {
+    await crud.getDocFromKey(key).then(async (lnks) => {
 
         console.log(lnks);
         if (lnks === undefined) { console.log("Internal Error !! (http - 500)"); }
         else if (lnks === null) {
 
             console.log(key);
-            (scrapper.scrape(key)).then((glimgurls) => {
+            await scrapper.scrape(key).then(async (glimgurls) => {
 
                 console.log(glimgurls);
-                pt1(glimgurls, key).then((flns) => {
+                await pt1(glimgurls, key).then(async (flns) => {
 
                     console.log(flns);
-                    pt2(flns, key).then((upimgurls) => {
+                    await pt2(flns, key).then(async (upimgurls) => {
 
                         console.log(upimgurls);
                         if (upimgurls.length === 0) { console.log("Internal Error !! (http - 500)"); return; }
-                        crud.createDoc({ "key" : key, "links" : upimgurls }).then((flag) => {
+                        await crud.createDoc({ "key" : key, "links" : upimgurls }).then((flag) => {
 
                             if (flag) { console.log("Successfully added \'key\' - " + key + " with it's \'images\' to database !! (http - 200)"); }
                             else { console.log("Internal Error !! (http - 500)"); }
