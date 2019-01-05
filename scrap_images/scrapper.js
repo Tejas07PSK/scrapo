@@ -17,7 +17,8 @@ const opts = {
     "keyword" : '',
     "num" : 15,
     "detail" : true,
-    "rtimeout" : 300000000
+    "rtimeout" : 300000000,
+    "show" : false
 
 };
 
