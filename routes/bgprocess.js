@@ -79,4 +79,9 @@ async function pt2(flns, key) {
 
 }
 
-pt0(String(process.argv[0])).then(() => { console.log("Background-Op complete !!"); }, (err) => { console.error(err); console.log("Background-Op failed !!"); });
+pt0(String(process.argv[0])).then(
+
+    () => { console.log("Background-Op complete !!"); process.exit(0); },
+    (err) => { console.error(err); console.log("Background-Op failed !!"); process.exit(0);}
+
+    );
