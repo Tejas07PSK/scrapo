@@ -107,9 +107,6 @@ router.post('/', function (req, res) {
         res.end("Internal Error !! (http - 500)", "utf-8", function () { console.log("Http conversation ended successfully !!"); });
 
     });
-    res.status(200);
-    res.end("pending", "utf-8");
-
 });
 
 async function pt1(glimgurls, key) {
