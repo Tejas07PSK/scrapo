@@ -20,7 +20,7 @@ module.exports = {
 
         await ((new models.keysimages(obj)).save()).then(
 
-            (doc) => { console.log("Document insertion successful in collection \'Dashboard\' !!"); console.log(`Newly created doc is : \n ${doc}`); eff = true; },
+            (doc) => { console.log("Document insertion successful in collection \'scrapo\' !!"); console.log(`Newly created doc is : \n ${doc}`); eff = true; },
             (err) => { console.log("Document insertion failed !! ERROR !!"); console.log(err); eff = false; }
 
         );
