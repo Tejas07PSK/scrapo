@@ -8,10 +8,11 @@
 
 "use strict";
 
-const scrapper = require('../scrap_images/scrapper');
+/*const scrapper = require('../scrap_images/scrapper');
 const img_cld = require('../image_cloud/upload');
 const prep = require('../filter_compress_images/compressandfilter');
-const crud = require('../models/crud');
+const crud = require('../models/crud');*/
+const spawn = require('child_process').spawn;
 const router = (require('express')).Router();
 
 /* GET home page */
@@ -28,7 +29,19 @@ router.get('/', function(req, res) {
 router.post('/', function (req, res) {
 
     let key = req.body['key'];
-    crud.getDocFromKey(key).then((lnks) => {
+    let bgop = spawn('node', [ (__dirname + '/bgprocess.js'), key ], { stdio : ['pipe', 'pipe', 'pipe'] });
+    bgop.stdout.on('data', (data) => { console.log(data.toString('utf8')); });
+    bgop.stderr.on('error', (err) => { console.log(err.toString('utf8')); });
+    bgop.on('close', (code) => { console.log(`Child process exited with code ${code}`); });
+    bgop.on('error', (error) => { console.log(error); });
+    res.status(200);
+    res.end(
+
+        "Thank you for using Scrapo !! Your \'search-key\' - " + key + " along with it's images will be added to our system. Please visit the keys page after a few minutes, to find your key there.",
+        "utf8", function () { console.log("Http conversation ended successfully !!"); }
+
+    );
+    /*crud.getDocFromKey(key).then((lnks) => {
 
         if (lnks === undefined) {
 
@@ -106,10 +119,10 @@ router.post('/', function (req, res) {
         res.status(500);
         res.end("Internal Error !! (http - 500)", "utf-8", function () { console.log("Http conversation ended successfully !!"); });
 
-    });
+    });*/
 });
 
-async function pt1(glimgurls, key) {
+/*async function pt1(glimgurls, key) {
 
     let flns = [];
     for (let i = 0; i < glimgurls.length; i += 1) {
@@ -139,6 +152,6 @@ async function pt2(flns, key) {
     }
     return (sec_urls);
 
-}
+}*/
 
 module.exports = router;
