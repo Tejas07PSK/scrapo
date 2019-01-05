@@ -18,7 +18,7 @@ const opts = {
     "num" : 15,
     "detail" : true,
     "rtimeout" : 300000000,
-    "show" : false
+    "nightmare" : { "show" : false }
 
 };
 
