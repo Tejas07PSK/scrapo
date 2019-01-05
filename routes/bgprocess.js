@@ -11,23 +11,29 @@
 const scrapper = require('../scrap_images/scrapper');
 const img_cld = require('../image_cloud/upload');
 const prep = require('../filter_compress_images/compressandfilter');
+const conn = require("../models/dbconnectmanage");
 const crud = require('../models/crud');
 
-async function pt0(key) {
+async function cc(key) {
 
-    await crud.getDocFromKey(key).then((lnks) => {
+    await crud.getDocFromKey(key).then(async (lnks) => {
 
+        console.log(lnks);
         if (lnks === undefined) { console.log("Internal Error !! (http - 500)"); }
         else if (lnks === null) {
 
-            (scrapper.scrape(key)).then((glimgurls) => {
+            console.log(key);
+            await (scrapper.scrape(key)).then(async (glimgurls) => {
 
-                pt1(glimgurls, key).then((flns) => {
+                console.log(glimgurls);
+                await pt1(glimgurls, key).then(async (flns) => {
 
-                    pt2(flns, key).then((upimgurls) => {
+                    console.log(flns);
+                    await pt2(flns, key).then(async (upimgurls) => {
 
+                        console.log(upimgurls);
                         if (upimgurls.length === 0) { console.log("Internal Error !! (http - 500)"); return; }
-                        crud.createDoc({ "key" : key, "links" : upimgurls }).then((flag) => {
+                        await crud.createDoc({ "key" : key, "links" : upimgurls }).then((flag) => {
 
                             if (flag) { console.log("Successfully added \'key\' - " + key + " with it's \'images\' to database !! (http - 200)"); }
                             else { console.log("Internal Error !! (http - 500)"); }
@@ -52,7 +58,7 @@ async function pt1(glimgurls, key) {
     let flns = [];
     for (let i = 0; i < glimgurls.length; i += 1) {
 
-        await prep.compressAndFilter(glimgurls[i], ("public/imgcache/temp" + key + i + ".jpg")).then(
+        await prep.compressAndFilter(glimgurls[i], ("../public/imgcache/temp" + key + i + ".jpg")).then(
 
             (fln) => { if (fln !== undefined) { flns.push(fln); } }
 
@@ -79,9 +85,17 @@ async function pt2(flns, key) {
 
 }
 
-pt0(String(process.argv[0])).then(
+((async () => { await conn.open() })()).then(
 
-    () => { console.log("Background-Op complete !!"); process.exit(0); },
-    (err) => { console.error(err); console.log("Background-Op failed !!"); process.exit(0);}
+    () => {
 
-    );
+        cc(String(process.argv[2])).then(
+
+            () => { console.log("Background-Op complete !!"); ((async () => { await conn.close() })()).then(() => { process.exit(0); }).catch((e) => { console.error(e); process.exit(0); }); },
+            (err) => { console.error(err); console.log("Background-Op failed !!"); ((async () => { await conn.close() })()).then(() => { process.exit(0) }).catch((e) => { console.error(e); process.exit(0); }); }
+
+        );
+
+    }
+
+).catch((e) => { console.error(e); process.exit(0); });
