@@ -17,7 +17,7 @@ const opts = {
     "keyword" : '',
     "num" : 15,
     "detail" : true,
-    "rlimit" : '20',
+    "rtimeout" : 300000000
 
 };
 
@@ -29,7 +29,8 @@ module.exports.scrape = async function (key) {
     let urls = [];
     await google.list(opts).then(
 
-        (res) => { for (let obj = 0; obj < res.length; obj += 1) { urls.push(res[obj].thumb_url); } }
+        (res) => { for (let obj = 0; obj < res.length; obj += 1) { urls.push(res[obj].thumb_url); } },
+        (err) => {console.log(err);}
 
     ).catch((err) => { console.log("Error !! Could not scrape images !! \n " + err); });
     return (urls);
