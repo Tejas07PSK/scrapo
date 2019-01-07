@@ -8,7 +8,7 @@
 
 "use strict";
 
-const scrapper = require('../scrap_images/scrapper');
+const scraper = require('../scrape_images/scraper');
 const img_cld = require('../image_cloud/upload');
 const prep = require('../filter_compress_images/compressandfilter');
 const conn = require("../models/dbconnectmanage");
@@ -23,7 +23,7 @@ async function cc(key) {
         else if (lnks === null) {
 
             console.log(key);
-            await scrapper.scrape(key).then(async (glimgurls) => {
+            await scraper.scrape(key).then(async (glimgurls) => {
 
                 console.log(glimgurls);
                 await pt1(glimgurls, key).then(async (flns) => {
