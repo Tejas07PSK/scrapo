@@ -8,7 +8,7 @@
 
 "use strict";
 
-const scrapper = require('./scrapper');
+const scrapper = require('./scraper');
 
 // testing scrapper.
 
