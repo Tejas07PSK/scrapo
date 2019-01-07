@@ -13,4 +13,4 @@ const url = "https://cdn-images-1.medium.com/max/800/1*4AApxPkF4yXzY0jF0yHgkA.jp
 
 // testing image-compression and grayscale-filter.
 
-prep.compressAndFilter(url, filename).then((res) => { console.log(`Base64 \'image-uri\' - ${res}`); }, (err) => { console.log(err); });
+prep.compressAndFilter(url).then((res) => { console.log(`Base64 \'image-uri\' - ${res}`); }, (err) => { console.log(err); });
