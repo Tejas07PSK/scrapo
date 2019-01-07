@@ -26,10 +26,10 @@ async function cc(key) {
             await scraper.scrape(key).then(async (glimgurls) => {
 
                 console.log(glimgurls);
-                await pt1(glimgurls, key).then(async (flns) => {
+                await pt1(glimgurls, key).then(async (b64uris) => {
 
-                    console.log(flns);
-                    await pt2(flns, key).then(async (upimgurls) => {
+                    console.log(b64uris);
+                    await pt2(b64uris, key).then(async (upimgurls) => {
 
                         console.log(upimgurls);
                         if (upimgurls.length === 0) { console.log("Internal Error !! (http - 500)"); return; }
@@ -53,14 +53,14 @@ async function cc(key) {
 
 }
 
-async function pt1(glimgurls, key) {
+async function pt1(glimgurls) {
 
-    let flns = [];
+    let b64uris = [];
     for (let i = 0; i < glimgurls.length; i += 1) {
 
-        await prep.compressAndFilter(glimgurls[i], ("../public/imgcache/temp" + key + i + ".jpg")).then(
+        await prep.compressAndFilter(glimgurls[i]).then(
 
-            (fln) => { if (fln !== undefined) { flns.push(fln); } }
+            (fln) => { if (fln !== undefined) { b64uris.push(fln); } }
 
         ).catch((err) => { console.log(err); });
 
@@ -69,12 +69,12 @@ async function pt1(glimgurls, key) {
 
 }
 
-async function pt2(flns, key) {
+async function pt2(b64uris, key) {
 
     let sec_urls = [];
-    for (let i = 0; i < flns.length; i += 1) {
+    for (let i = 0; i < b64uris.length; i += 1) {
 
-        await img_cld.send(flns[i], key).then((img_url) => {
+        await img_cld.send(b64uris[i], key).then((img_url) => {
 
             sec_urls.push(img_url);
 
