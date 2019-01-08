@@ -20,17 +20,14 @@ async function cc(key) {
 
         if (lnks === undefined) { console.log("Internal Error !! (http - 500)"); }
         else if (lnks === null) {
-            
+
             await scraper.scrape(key).then(async (glimgurls) => {
 
-                console.log(glimgurls);
                 if (glimgurls.length === 0) { console.log(`No results retrieved for \'key\' - ${key}`); return; }
                 await pt1(glimgurls, key).then(async (b64uris) => {
 
-                    console.log(b64uris);
                     await pt2(b64uris, key).then(async (upimgurls) => {
 
-                        console.log(upimgurls);
                         if (upimgurls.length === 0) { console.log("Internal Error !! (http - 500)"); return; }
                         await crud.createDoc({ "key" : key, "links" : upimgurls }).then((flag) => {
 
