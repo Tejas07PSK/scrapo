@@ -26,9 +26,8 @@ module.exports.scrape = async function (key){
             temp.forEach((dom_obj) => { img_urls.push(JSON.parse(dom_obj.children[0].data)['tu']); });
 
         },
-        (err) => { console.log('Scraping of images failed !!'); console.error(err); }
 
-    );
+    ).catch((err) => { console.log('Scraping of images failed !!'); console.error(err); });
     return(img_urls);
 
 };
