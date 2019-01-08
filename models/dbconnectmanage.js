@@ -10,12 +10,12 @@
 
 const mongo = require("mongoose");
 const db = mongo.connection;
-const url = (process.env.DB_URL);
+const url = (process.env.DB_URL) || "mongodb://localhost:27017/scrapo";
 const options = {
 
     bufferCommands : true,
-    user : (process.env.DB_USERNAME),
-    pass : (process.env.DB_PASSWORD),
+    user : (process.env.DB_USERNAME) || "palashsarkar",
+    pass : (process.env.DB_PASSWORD) || "tejas07",
     autoIndex: false,
     useNewUrlParser : true,
     useCreateIndex : false,
