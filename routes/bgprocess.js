@@ -26,6 +26,7 @@ async function cc(key) {
             await scraper.scrape(key).then(async (glimgurls) => {
 
                 console.log(glimgurls);
+                if (glimgurls.length === 0) { console.log(`No results retrieved for \'key\' - ${key}`); return; }
                 await pt1(glimgurls, key).then(async (b64uris) => {
 
                     console.log(b64uris);
