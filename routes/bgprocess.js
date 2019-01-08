@@ -18,11 +18,9 @@ async function cc(key) {
 
     await crud.getDocFromKey(key).then(async (lnks) => {
 
-        console.log(lnks);
         if (lnks === undefined) { console.log("Internal Error !! (http - 500)"); }
         else if (lnks === null) {
-
-            console.log(key);
+            
             await scraper.scrape(key).then(async (glimgurls) => {
 
                 console.log(glimgurls);
