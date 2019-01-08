@@ -65,7 +65,7 @@ async function pt1(glimgurls) {
         ).catch((err) => { console.log(err); });
 
     }
-    return (flns);
+    return (b64uris);
 
 }
 
